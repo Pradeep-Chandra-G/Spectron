@@ -1,0 +1,11 @@
+com\ragapp\RagApplication.class
+com\ragapp\config\WebConfig.class
+com\ragapp\repository\ChatMessageRepository.class
+com\ragapp\service\ChatService.class
+com\ragapp\controller\ChatController.class
+com\ragapp\entity\Document.class
+com\ragapp\entity\ChatMessage.class
+com\ragapp\controller\DocumentController.class
+com\ragapp\entity\ProcessingStatus.class
+com\ragapp\service\DocumentService.class
+com\ragapp\repository\DocumentRepository.class

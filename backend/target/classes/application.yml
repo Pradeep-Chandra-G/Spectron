@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: document-rag
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ragdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+ai:
+  ollama:
+    base-url: http://localhost:11434
+    chat:
+      options:
+        model: gemma2:9b
+        temperature: 0.7
+        num-predict: 2048
+  vectorstore:
+    pgvector:
+      dimensions: 384
+      distance-type: COSINE_DISTANCE
+      index-type: HNSW
+
+logging:
+  level:
+    org.springframework.ai: DEBUG
