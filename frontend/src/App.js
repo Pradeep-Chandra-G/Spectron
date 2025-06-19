@@ -4,6 +4,7 @@ import { Upload, Send, File, Trash2, MessageCircle, Bot, User, Loader, CheckCirc
 const RagChatApp = () => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
+  const inputRef = useRef(null);
   const [documents, setDocuments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
@@ -21,6 +22,7 @@ const RagChatApp = () => {
 
   useEffect(() => {
     scrollToBottom();
+    inputRef.current?.focus();
   }, [messages]);
 
   const scrollToBottom = () => {
@@ -416,6 +418,7 @@ const RagChatApp = () => {
                 <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
                   <div className="flex-1 relative">
                     <input
+                        ref={inputRef}
                         type="text"
                         value={inputMessage}
                         onChange={(e) => setInputMessage(e.target.value)}
