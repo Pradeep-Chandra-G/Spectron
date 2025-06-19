@@ -10,10 +10,10 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 2000 )
     private String filename;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 2000)
     private String originalName;
 
     @Column(nullable = false)
@@ -22,7 +22,7 @@ public class Document {
     @Column(nullable = false)
     private Long fileSize;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 2000)
     private String filePath;
 
     @Column(nullable = false)
@@ -31,7 +31,7 @@ public class Document {
     @Enumerated(EnumType.STRING)
     private ProcessingStatus status;
 
-    @Column(length = 1000)
+    @Column(columnDefinition = "TEXT")
     private String errorMessage;
 
     private Integer chunkCount;

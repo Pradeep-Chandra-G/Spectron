@@ -10,16 +10,16 @@ public class ChatMessage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 2000)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String question;
 
-    @Column(nullable = false, length = 5000)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String answer;
 
     @Column(nullable = false)
     private LocalDateTime timestamp;
 
-    @Column(length = 1000)
+    @Column(columnDefinition = "TEXT")
     private String context;
 
     // Constructors
