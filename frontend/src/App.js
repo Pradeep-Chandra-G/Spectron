@@ -18,6 +18,7 @@ const RagChatApp = () => {
   useEffect(() => {
     fetchDocuments();
     fetchChatHistory();
+    document.title = "Spectron";
   }, []);
 
   useEffect(() => {
