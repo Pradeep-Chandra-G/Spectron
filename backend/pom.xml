@@ -16,7 +16,7 @@
     <artifactId>document-rag</artifactId>
     <version>1.0.0</version>
     <name>document-rag</name>
-    <description>RAG Application with Gemma 2 9B</description>
+    <description>RAG Application with Groq API and Pinecone</description>
 
     <properties>
         <java.version>17</java.version>
@@ -60,11 +60,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.pgvector</groupId>
-            <artifactId>pgvector</artifactId>
-            <version>0.1.4</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
@@ -72,22 +67,33 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
+
+        <!-- Remove pgvector and postgresql dependencies -->
+        <!-- Add Pinecone vector store -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-pinecone-store-spring-boot-starter</artifactId>
         </dependency>
+
+        <!-- Replace Ollama with OpenAI (for Groq compatibility) -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-pgvector-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-openai-spring-boot-starter</artifactId>
         </dependency>
+
+        <!-- Document processing -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-tika-document-reader</artifactId>
         </dependency>
+
+        <!-- Keep SQLite for metadata storage -->
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
         </dependency>
+
+        <!-- Apache Tika -->
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-core</artifactId>
@@ -98,6 +104,13 @@
             <artifactId>tika-parsers-standard-package</artifactId>
             <version>2.9.1</version>
         </dependency>
+
+        <!-- HTTP Client for Groq API -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
